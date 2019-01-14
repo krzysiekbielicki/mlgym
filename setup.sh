@@ -1,7 +1,5 @@
 #!/bin/sh
 
-brew switch python 3.6.5
-
 pip3 install --upgrade virtualenv
 virtualenv --system-site-packages -p python3 venv
 # Activate the Virtualenv environment

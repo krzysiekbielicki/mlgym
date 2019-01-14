@@ -1,4 +1,16 @@
+### Install python 3.6.5
+
+```
+brew unlink python # If you have installed (with brew) another version of python
+brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/f2a764ef944b1080be64bd88dca9a1d80130c558/Formula/python.rb
+```
+
+
 run setup.sh to install all requirements (it'll switch python 3 to python 3.6.5 - TensorFlow requirement)
+
+### Enter Virtualenv
+source ./venv/bin/activate
+
 
 cartpole.py from https://medium.com/coinmonks/build-your-first-ai-game-bot-using-openai-gym-keras-tensorflow-in-python-50a4d4296687
 
