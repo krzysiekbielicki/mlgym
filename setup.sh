@@ -1,13 +1,6 @@
 #!/bin/sh
 
-brew switch python 3.6.5
-
-pip3 install --upgrade virtualenv
-virtualenv --system-site-packages -p python3 venv
-# Activate the Virtualenv environment
-source ./venv/bin/activate
-# Install TensorFlow and all the packages
-pip3 install --upgrade tensorflow
-#Install Keras
-pip3 install keras
-pip3 install gym-super-mario-bros
+sudo installer -pkg /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg -target /
+pyenv install 3.6.5
+pipenv install --python ~/.pyenv/versions/3.6.5/bin/python3
+pipenv shell
