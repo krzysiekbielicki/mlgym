@@ -1,8 +1,8 @@
 import gym
 import random
 import numpy as np
-from keras.models     import Sequential
-from keras.layers     import Dense
+from keras.models import Sequential
+from keras.layers import Dense
 from keras.optimizers import Adam
 
 env = gym.make('CartPole-v1')
@@ -11,9 +11,10 @@ goal_steps = 500
 score_requirement = 60
 intial_games = 10000
 
+
 def play_a_random_game_first():
     for step_index in range(goal_steps):
-        #env.render()
+        # env.render()
         action = env.action_space.sample()
         observation, reward, done, info = env.step(action)
         print("Step {}:".format(step_index))
@@ -25,6 +26,7 @@ def play_a_random_game_first():
         if done:
             break
     env.reset()
+
 
 def model_data_preparation():
     training_data = []
@@ -60,6 +62,7 @@ def model_data_preparation():
 
     return training_data
 
+
 def build_model(input_size, output_size):
     model = Sequential()
     model.add(Dense(64, input_dim=input_size, activation='relu'))
@@ -69,6 +72,7 @@ def build_model(input_size, output_size):
 
     return model
 
+
 def train_model(training_data):
     X = np.array([i[0] for i in training_data]).reshape(-1, len(training_data[0][0]))
     y = np.array([i[1] for i in training_data]).reshape(-1, len(training_data[0][1]))
@@ -76,6 +80,7 @@ def train_model(training_data):
 
     model.fit(X, y, epochs=10)
     return model
+
 
 training_data = model_data_preparation()
 trained_model = train_model(training_data)
@@ -88,15 +93,15 @@ for each_game in range(100):
     for step_index in range(goal_steps):
         # Uncomment below line if you want to see how our bot is playing the game.
         env.render()
-        if len(prev_obs)==0:
-            action = random.randrange(0,2)
+        if len(prev_obs) == 0:
+            action = random.randrange(0, 2)
         else:
             action = np.argmax(trained_model.predict(prev_obs.reshape(-1, len(prev_obs)))[0])
 
         choices.append(action)
         new_observation, reward, done, info = env.step(action)
         prev_obs = new_observation
-        score+=reward
+        score += reward
         if done:
             break
 
@@ -104,5 +109,5 @@ for each_game in range(100):
     scores.append(score)
 
 print(scores)
-print('Average Score:',sum(scores)/len(scores))
-print('choice 1:{}  choice 0:{}'.format(choices.count(1)/len(choices),choices.count(0)/len(choices)))
+print('Average Score:', sum(scores) / len(scores))
+print('choice 1:{}  choice 0:{}'.format(choices.count(1) / len(choices), choices.count(0) / len(choices)))
