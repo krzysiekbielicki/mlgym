@@ -1,15 +1,15 @@
-### Install python 3.6.5
+### Run setup
+Installs pyenv + pipenv with python 3.6.5
 
 ```
-brew unlink python # If you have installed (with brew) another version of python
-brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/f2a764ef944b1080be64bd88dca9a1d80130c558/Formula/python.rb
+./setup.sh
 ```
 
+### Enter pipenv
 
-run setup.sh to install all requirements (it'll switch python 3 to python 3.6.5 - TensorFlow requirement)
-
-### Enter Virtualenv
-source ./venv/bin/activate
+```
+pipenv shell
+```
 
 
 cartpole.py from https://medium.com/coinmonks/build-your-first-ai-game-bot-using-openai-gym-keras-tensorflow-in-python-50a4d4296687
@@ -21,4 +21,6 @@ https://github.com/Kautenja/gym-super-mario-bros
 
 https://docs.google.com/document/d/1TL5vI3Phy1gX3FnYHcGqR4AGfMl4erxIDks73SLlieo/edit?ts=5ad86aed#heading=h.ynoqbv25cth7
 
-link to dashboard https://www.hostedgraphite.com/f1ace144/grafana/dashboard/db/ai-scores?refresh=5s
+https://github.com/jtoy/awesome-tensorflow
+
+link to dashboard https://www.hostedgraphite.com/f1ace144/b0d7af28-d899-482c-a8ea-1f22fa61e6a4/grafana/dashboard/db/ai-scores?refresh=5s&from=now-6h&to=now
